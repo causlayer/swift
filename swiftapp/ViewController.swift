@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     var operant2:String = ""
     var operator:String = ""
     
+    var isdo:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         resultLable = UILabel(frame: CGRectMake(70,30,182,25))
@@ -48,11 +50,12 @@ class ViewController: UIViewController {
 
     func buttonAction(sender : UIButton) {
         let value = sender.currentTitle
-        println(operant1.toInt())
+        println(value)
         if value == "+" || value == "-" || value == "×" || value == "÷" {
             operator = value;
             return
         }else if value == "=" {
+            isdo = true
             var result :Float = 0.0
             switch operator {
                case "+":
@@ -71,11 +74,16 @@ class ViewController: UIViewController {
             }else{
                resultLable.text = "\(result)"
             }
+            operator = ""
             operant2 = ""
             operant1 = resultLable.text
             return
         }
         if operator == "" {
+            if isdo {
+                operant1 = ""
+                isdo = false
+            }
             operant1 = operant1 + value
             resultLable.text = operant1
         }else{
