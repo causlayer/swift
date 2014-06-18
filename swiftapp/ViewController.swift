@@ -50,7 +50,6 @@ class ViewController: UIViewController {
 
     func buttonAction(sender : UIButton) {
         let value = sender.currentTitle
-        println(value)
         if value == "+" || value == "-" || value == "×" || value == "÷" {
             operator = value;
             return
